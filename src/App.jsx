@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
+import PhotographyGallery from './pages/PhotographyGallery.jsx';
+import {useNavigate,Link} from 'react-router-dom';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -10,14 +12,14 @@ const navLinks = [
 ];
 
 const portfolioItems = [
-  { id: 1, category: 'weddings', size: 'tall', image: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1000&q=85', alt: 'Wedding ceremony', label: 'Wedding', title: 'Hampshire' },
-  { id: 2, category: 'portraits', size: '', image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=1000&q=85', alt: 'Wedding portrait', label: 'Portraits', title: 'Cotswolds' },
-  { id: 3, category: 'moments', size: 'wide', image: 'https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?auto=format&fit=crop&w=1200&q=85', alt: 'Bride and groom wedding moment', label: 'Moments', title: 'London' },
-  { id: 4, category: 'details', size: '', image: 'https://images.unsplash.com/photo-1544078751-58fee2d8a03b?auto=format&fit=crop&w=1000&q=85', alt: 'Wedding rings and flowers', label: 'Details', title: 'Surrey' },
-  { id: 5, category: 'weddings', size: 'tall', image: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1000&q=85', alt: 'Wedding reception', label: 'Wedding', title: 'Edinburgh' },
-  { id: 6, category: 'moments', size: '', image: 'https://images.unsplash.com/photo-1465495976277-4387d4b0e4a6?auto=format&fit=crop&w=1000&q=85', alt: 'Wedding couple', label: 'Moments', title: 'Yorkshire' },
-  { id: 7, category: 'portraits', size: 'wide', image: 'https://images.unsplash.com/photo-1606800052052-a08af7148866?auto=format&fit=crop&w=1200&q=85', alt: 'Bride portrait', label: 'Portraits', title: 'Lake District' },
-  { id: 8, category: 'details', size: '', image: 'https://images.unsplash.com/photo-1606216794074-735e91aa2c92?auto=format&fit=crop&w=1000&q=85', alt: 'Wedding flowers', label: 'Details', title: 'Devon' },
+  { id: 1, category: 'weddings', size: 'tall', image: '/Images/Wedding1.jpeg', alt: 'Wedding ceremony', label: 'Wedding', title: 'Hampshire' },
+  { id: 2, category: 'portraits', size: '', image: '/Images/Potrait2.jpeg', alt: 'Wedding portrait', label: 'Portraits', title: 'Cotswolds' },
+  { id: 3, category: 'moments', size: 'wide', image: '/Images/Moments2.jpeg', alt: 'Bride and groom wedding moment', label: 'Moments', title: 'London' },
+  { id: 4, category: 'details', size: '', image: '/Images/Details1.jpeg', alt: 'Wedding rings and flowers', label: 'Details', title: 'Surrey' },
+  { id: 5, category: 'weddings', size: 'tall', image: '/Images/Moments3.jpeg', alt: 'Wedding reception', label: 'Wedding', title: 'Edinburgh' },
+  { id: 6, category: 'moments', size: '', image: '/Images/Moments1.jpeg', alt: 'Wedding couple', label: 'Moments', title: 'Yorkshire' },
+  { id: 7, category: 'portraits', size: 'wide', image: '/Images/Potrait1.jpeg', alt: 'Bride portrait', label: 'Portraits', title: 'Lake District' },
+  { id: 8, category: 'details', size: '', image: '/Images/Details2.jpeg', alt: 'Wedding flowers', label: 'Details', title: 'Devon' },
 ];
 
 const instagramImages = [
@@ -194,13 +196,16 @@ function App() {
     }
   }, [lightboxIndex, lightboxOpen, visibleImages]);
 
-  const handleOpenLightbox = (index) => {
-    if (!visibleImages.length) return;
+  const handleOpenLightbox = (item) => {
+  if (!visibleImages.length) return;
 
-    const nextIndex = visibleImages.findIndex((item) => item.id === portfolioItems[index].id);
-    setLightboxIndex(nextIndex >= 0 ? nextIndex : 0);
-    setLightboxOpen(true);
-  };
+  const nextIndex = visibleImages.findIndex(
+    (image) => image.id === item.id
+  );
+
+  setLightboxIndex(nextIndex >= 0 ? nextIndex : 0);
+  setLightboxOpen(true);
+};
 
   const handleCloseLightbox = () => setLightboxOpen(false);
 
@@ -298,7 +303,7 @@ function App() {
         <section className="intro section">
           <div className="intro-inner">
             <p className="eyebrow dark">THE APPROACH</p>
-            <h2>
+            <h2 className = "intro-heading">
               Photographs that let you
               <em>relive the feeling.</em>
             </h2>
@@ -347,10 +352,10 @@ function App() {
               <p>
                 From the quiet moments before the ceremony to a packed dance floor after sunset, every part of this day was full of warmth, personality and connection.
               </p>
-              <a href="#portfolio">
+              <Link to="/gallery">
                 View full story
                 <span>→</span>
-              </a>
+              </Link>
             </div>
           </div>
         </section>
@@ -377,18 +382,18 @@ function App() {
           </div>
 
           <div className="portfolio-grid">
-            {visiblePortfolio.map((item, index) => (
+            {visiblePortfolio.map((item) => (
               <article
                 key={item.id}
                 className={`portfolio-item ${item.size} ${item.hidden ? 'hidden' : ''}`}
                 data-category={item.category}
               >
                 <img
-                  src={item.image}
-                  alt={item.alt}
-                  loading="lazy"
-                  onError={handleImageError}
-                  onClick={() => handleOpenLightbox(index)}
+                 src={item.image}
+                 alt={item.alt}
+                 loading="lazy"
+                 onError={handleImageError}
+                 onClick={() => handleOpenLightbox(item)}
                 />
 
                 <div className="portfolio-caption">
@@ -402,7 +407,7 @@ function App() {
 
         <section className="about section" id="about">
           <div className="about-image">
-            <img src="Images/About.JPG" alt="Wedding photographer" loading="lazy" onError={handleImageError} />
+            <img src="/Images/About.JPG" alt="Wedding photographer" loading="lazy" onError={handleImageError} />
           </div>
 
           <div className="about-content">
@@ -577,8 +582,8 @@ function App() {
       <footer className="footer">
         <div className="footer-top">
           <a href="#home" className="footer-logo">
-            EVERMORE
-            <span>WEDDING PHOTOGRAPHY</span>
+            VIPIN WILFRED
+            <span>WEDDING PHOTOGRAPHER</span>
           </a>
 
           <p>Timeless photographs. Honest stories.</p>
@@ -587,7 +592,7 @@ function App() {
             <a href="#stories">Portfolio</a>
             <a href="#about">About</a>
             <a href="#contact">Contact</a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener">
+            <a href="https://instagram.com/vipinwilf/" target="_blank" rel="noopener">
               Instagram
             </a>
           </div>
@@ -596,7 +601,7 @@ function App() {
         <div className="footer-bottom">
           <span>
             © <span id="current-year">{new Date().getFullYear()}</span>
-            Evermore Wedding Photography
+            Vipin Wilfred Wedding Photographer
           </span>
           <span>London · UK · Worldwide</span>
         </div>

@@ -432,7 +432,10 @@ textarea {
 .intro h2 {
     margin-bottom: 40px;
 }
-
+.intro-heading{
+    display:grid;
+    gap:5px;
+}
 em {
     font-style: italic;
 }
@@ -694,6 +697,7 @@ em {
     height: 100%;
 
     object-fit: cover;
+    cursor: pointer;
 
     transition:
         transform 0.7s ease;
@@ -707,7 +711,6 @@ em {
     content: "";
 
     position: absolute;
-
     inset: 0;
 
     background:
@@ -718,9 +721,10 @@ em {
 
     opacity: 0;
 
+    pointer-events: none;
+
     transition: opacity 0.4s ease;
 }
-
 .portfolio-item:hover::after {
     opacity: 1;
 }
