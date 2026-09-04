@@ -12,13 +12,13 @@ const navLinks = [
 ];
 
 const portfolioItems = [
-  { id: 1, category: 'weddings', size: 'tall', image: '/Images/Wedding1.jpeg', alt: 'Wedding ceremony', label: 'Wedding', title: 'Hampshire' },
-  { id: 2, category: 'portraits', size: '', image: '/Images/Potrait2.jpeg', alt: 'Wedding portrait', label: 'Portraits', title: 'Cotswolds' },
-  { id: 3, category: 'moments', size: 'wide', image: '/Images/Moments2.jpeg', alt: 'Bride and groom wedding moment', label: 'Moments', title: 'London' },
+  { id: 1, category: 'moments', size: 'tall', image: '/Images/Moments2.jpeg', alt: 'Wedding ceremony', label: 'Moments', title: 'Hampshire' },
+  { id: 2, category: 'portraits', size: '', image: '/Images/Potrait1.jpeg', alt: 'Wedding portrait', label: 'Portraits', title: 'Cotswolds' },
+  { id: 3, category: 'weddings', size: 'wide', image: '/Images/Wedding1.jpeg', alt: 'Bride and groom wedding moment', label: 'Wedding', title: 'London' },
   { id: 4, category: 'details', size: '', image: '/Images/Details1.jpeg', alt: 'Wedding rings and flowers', label: 'Details', title: 'Surrey' },
-  { id: 5, category: 'weddings', size: 'tall', image: '/Images/Moments3.jpeg', alt: 'Wedding reception', label: 'Wedding', title: 'Edinburgh' },
+  { id: 5, category: 'portraits', size: 'tall', image: '/Images/Potrait2.jpeg', alt: 'Wedding reception', label: 'Portraits', title: 'Edinburgh' },
   { id: 6, category: 'moments', size: '', image: '/Images/Moments1.jpeg', alt: 'Wedding couple', label: 'Moments', title: 'Yorkshire' },
-  { id: 7, category: 'portraits', size: 'wide', image: '/Images/Potrait1.jpeg', alt: 'Bride portrait', label: 'Portraits', title: 'Lake District' },
+  { id: 7, category: 'weddings', size: 'wide', image: '/Images/Wedding2.jpeg', alt: 'Bride portrait', label: 'Wedding', title: 'Lake District' },
   { id: 8, category: 'details', size: '', image: '/Images/Details2.jpeg', alt: 'Wedding flowers', label: 'Details', title: 'Devon' },
 ];
 
